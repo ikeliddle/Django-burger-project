@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'burgerboard/style.css' %}" />
+</head>
+<body>
+
+<h1>Hello and welcome to the burger ordering website</h1>
+<br>
+<a href="/burgerboard">Log Out</a>
+<br>
+<br>
+<a href="/burgerblog">Burger blog</a>
+<br>
+<br>
+<form action="{% url 'formcomplete'  %}" method="post">
+    {% csrf_token %}
+    Are You interested in burger day? <br>
+    Name: <br>
+    <input type="text" name='firstname'>
+    <input type="submit" value="enter">
+</form>
+
+<br>
+<br>
+<p>The next meal time is:
+<span> {{ Mealtime.next_meal }}</span>
+</p>
+<p>The amount of spaces in total:
+<span>{{ InterestMax.maximum }}</span>
+</p>
+<p>
+
+Cut off point for this burger event:
+<span>{{ InterestCut.cutoff_date }}</span>
+</p>
+
+<br>
+<br>
+<p>People that have already registered interest:</p>
+{% for name in Interest %}
+    <ul>
+        {{name.name}}
+    </ul>
+{% endfor %}
+</body>
+</html>

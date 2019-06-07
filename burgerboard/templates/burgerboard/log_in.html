@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'burgerboard/style.css' %}" />
+</head>
+<body>
+
+<div class="usernamepassword">
+<h1>Log in.</h1>
+<p>Be aware, details are case sensitive.</p>
+<p>Be aware that if you input your details incorrectly you will be deposited back onto this page instead of being moved onto to the logged in homepage.</p>
+<br>
+<form action="{% url 'logincomplete'  %}" method="post">
+    {% csrf_token %}
+    Username:<br>
+    <input type="text" name="Username"><br>
+    Password:<br>
+    <input type="text" name="Password">
+    <br>
+    <br>
+    <input type="submit" value="enter">
+</form>
+</div>
+
+</body>
+</html>

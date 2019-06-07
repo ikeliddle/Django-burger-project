@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'burgerblog/style2.css' %}" />
+</head>
+<body>
+
+<h1>Welcome to the Burger Blog</h1>
+<p>Please post quotes to your hearts content</p>
+
+<br>
+<a href="/burgerboard">Log Out</a>
+<br><br>
+<a href="/burgerboard/loggedin">Homepage</a>
+
+<form action="{% url 'quote_added'  %}" method="post">
+    {% csrf_token %}
+    <br>
+    Name: <br>
+    <input type="text" name='blog_name'> <br>
+    Quote: <br>
+    <input type='text' name='quote_text'>
+    <input type="submit" value="enter">
+</form>
+
+
+<br>
+<p>Our favourite quotes:</p>
+
+<div class='quotes'>
+{% for quote_text in Quote %}
+    <ul>
+        {{quote_text.blog_name}}   -   "{{quote_text.quote_text}}" 
+    </ul>
+{% endfor %}
+</div>
+
+
+
+</body>
+</html>

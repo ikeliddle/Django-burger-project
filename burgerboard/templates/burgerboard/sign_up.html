@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'burgerboard/style.css' %}" />
+</head>
+<body>
+
+<div class="usernamepassword">
+<h1>Sign Up.</h1>
+<p>Be aware, details are case sensitive.</p>
+<br>
+<form action="{% url 'signupcomplete'  %}" method="post">
+    {% csrf_token %}
+    Username:<br>
+    <input type="text" name="Username"><br>
+    Password:<br>
+    <input type="text" name="Password">
+    <br>
+    <br>
+    <input type="submit" value="enter">
+</form>
+</div>
+</body>
+</html>
